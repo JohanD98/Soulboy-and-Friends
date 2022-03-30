@@ -8,6 +8,7 @@ public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] NavMeshAgent m_agent;
     [SerializeField] Camera m_cam;
+    [SerializeField] Animator m_animator;
     [SerializeField] LayerMask m_layerMask;
     [SerializeField] float m_timeBetweenMoveCommands;
     [SerializeField] float m_dashCooldown;
@@ -45,6 +46,19 @@ public class PlayerMovement : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.Space))
         {
             Dash();
+        }
+        CheckAnimations();
+    }
+
+    private void CheckAnimations()
+    {
+        if(m_agent.remainingDistance > 0.2f)
+        {
+            m_animator.SetFloat("runSpeed", m_agent.speed);
+        }
+        else
+        {
+            m_animator.SetFloat("runSpeed", 0);
         }
     }
 
