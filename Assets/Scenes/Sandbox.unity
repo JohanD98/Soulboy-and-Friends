@@ -1882,11 +1882,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_agent: {fileID: 1364508549}
-  m_timeBetweenMoveCommands: 0.1
   m_cam: {fileID: 1270564807}
   m_layerMask:
     serializedVersion: 2
     m_Bits: 64
+  m_timeBetweenMoveCommands: 0.1
+  m_dashCooldown: 5
+  m_dashDistance: 4
+  m_dashTime: 0.2
 --- !u!1001 &1524174785
 PrefabInstance:
   m_ObjectHideFlags: 0
