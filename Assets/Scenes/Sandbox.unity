@@ -4194,22 +4194,10 @@ PrefabInstance:
       propertyPath: m_cam
       value: 
       objectReference: {fileID: 1270564807}
-    - target: {fileID: 1615371159, guid: 178996305589ec548a8e00f7dd1c63ab, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1615371160, guid: 178996305589ec548a8e00f7dd1c63ab, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 1615371161, guid: 178996305589ec548a8e00f7dd1c63ab, type: 3}
       propertyPath: m_cam
       value: 
       objectReference: {fileID: 1270564807}
-    - target: {fileID: 1615371161, guid: 178996305589ec548a8e00f7dd1c63ab, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 1154323744465846012, guid: 178996305589ec548a8e00f7dd1c63ab, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -4257,18 +4245,6 @@ PrefabInstance:
     - target: {fileID: 1157539158190085390, guid: 178996305589ec548a8e00f7dd1c63ab, type: 3}
       propertyPath: m_Name
       value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 1244976196581731316, guid: 178996305589ec548a8e00f7dd1c63ab, type: 3}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 9100000, guid: 9dcc1c9881c3d7549b407aacec92f972, type: 2}
-    - target: {fileID: 1244976196581731316, guid: 178996305589ec548a8e00f7dd1c63ab, type: 3}
-      propertyPath: m_CullingMode
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1244976196581731316, guid: 178996305589ec548a8e00f7dd1c63ab, type: 3}
-      propertyPath: m_ApplyRootMotion
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 178996305589ec548a8e00f7dd1c63ab, type: 3}
