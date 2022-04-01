@@ -161,18 +161,18 @@ public class PlayerMovement : MonoBehaviour
         {
         }
         Vector3 startPos = m_agent.gameObject.transform.position;
-        Vector3 endPos = m_agent.gameObject.transform.position + (new Vector3(hit.point.x - startPos.x, 0, hit.point.z - startPos.z)).normalized * m_dashDistance;
+        Vector3 endPos = m_agent.gameObject.transform.position + (new Vector3(hit.point.x - startPos.x, startPos.y, hit.point.z - startPos.z)).normalized * m_dashDistance;
         Vector3 dir = (startPos - endPos).normalized;
         m_agent.gameObject.transform.LookAt(new Vector3(endPos.x, 0, endPos.z));
         while(dashTime < m_dashTime)
         {
             dashTime += Time.deltaTime;
-            m_agent.gameObject.transform.position = new Vector3(Mathf.Lerp(startPos.x, endPos.x, dashTime / m_dashTime),0,Mathf.Lerp(startPos.z, endPos.z, dashTime / m_dashTime));
+            m_agent.gameObject.transform.position = new Vector3(Mathf.Lerp(startPos.x, endPos.x, dashTime / m_dashTime), m_agent.gameObject.transform.position.y, Mathf.Lerp(startPos.z, endPos.z, dashTime / m_dashTime));
             NavMeshHit navHit;
             if (!NavMesh.SamplePosition(m_agent.gameObject.transform.position, out navHit, .5f, NavMesh.AllAreas))
             {
                 dashTime -= Time.deltaTime;
-                m_agent.gameObject.transform.position = new Vector3(Mathf.Lerp(startPos.x, endPos.x, dashTime / m_dashTime), 0, Mathf.Lerp(startPos.z, endPos.z, dashTime / m_dashTime));
+                m_agent.gameObject.transform.position = new Vector3(Mathf.Lerp(startPos.x, endPos.x, dashTime / m_dashTime), m_agent.gameObject.transform.position.y, Mathf.Lerp(startPos.z, endPos.z, dashTime / m_dashTime));
                 break;
             }
             yield return null;
