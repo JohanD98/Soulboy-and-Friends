@@ -17,6 +17,9 @@ public class PlayerMovement : MonoBehaviour
     private bool m_isDashing;
     private float m_timeSinceLastMoveCommand;
     private float m_timeSinceLastDash;
+
+    private Interactable m_focus;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -47,19 +50,17 @@ public class PlayerMovement : MonoBehaviour
         {
             Dash();
         }
+        if(m_focus != null)
+        {
+            m_agent.SetDestination(m_focus.transform.position);
+            LookAtTarget();
+        }
         CheckAnimations();
     }
 
     private void CheckAnimations()
     {
-        if(m_agent.remainingDistance > 0.2f)
-        {
-            m_animator.SetFloat("runSpeed", m_agent.speed);
-        }
-        else
-        {
-            m_animator.SetFloat("runSpeed", 0);
-        }
+        
     }
 
     private void MoveCommandCalled()
@@ -72,9 +73,59 @@ public class PlayerMovement : MonoBehaviour
         RaycastHit hit;
         if(Physics.Raycast(ray, out hit, m_layerMask))
         {
-            m_agent.SetDestination(hit.point);
+            Interactable interactable = hit.collider.GetComponent<Interactable>();
+            if(interactable != null)
+            {
+                SetFocus(interactable);
+            }
+            else
+            {
+                ResetFocus();
+                m_agent.SetDestination(hit.point);
+            }
         }
 
+    }
+
+    private void SetFocus(Interactable interactable)
+    {
+
+        if(interactable != m_focus)
+        {
+            if(m_focus != null)
+            {
+                m_focus.DeFocused();
+            }
+            m_focus = interactable;
+            m_agent.stoppingDistance = m_focus.radius * .8f;
+            m_agent.updateRotation = false;
+        }
+
+        interactable.OnFocused(this.transform);
+    }
+
+    private void ResetFocus()
+    {
+        if(m_focus != null)
+        {
+            m_focus.DeFocused();
+        }
+        m_agent.stoppingDistance = 0;
+        m_agent.updateRotation = true;
+        m_focus = null;
+        
+    }
+
+    private void InteractWithInteractable()
+    {
+
+    }
+
+    private void LookAtTarget()
+    {
+        Vector3 dir = (m_focus.transform.position - m_agent.transform.position).normalized;
+        Quaternion lookRotation = Quaternion.LookRotation(new Vector3(dir.x, 0, dir.z));
+        transform.rotation = lookRotation;
     }
 
     private void Dash()
