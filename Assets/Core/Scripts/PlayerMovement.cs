@@ -18,6 +18,8 @@ public class PlayerMovement : MonoBehaviour
     private float m_timeSinceLastMoveCommand;
     private float m_timeSinceLastDash;
 
+    private bool m_movementStopped;
+
     private Interactable m_focus;
 
     // Start is called before the first frame update
@@ -52,7 +54,10 @@ public class PlayerMovement : MonoBehaviour
         }
         if(m_focus != null)
         {
-            m_agent.SetDestination(m_focus.transform.position);
+            if(!m_movementStopped)
+            {
+                m_agent.SetDestination(m_focus.transform.position);
+            }
             LookAtTarget();
         }
         CheckAnimations();
@@ -93,7 +98,10 @@ public class PlayerMovement : MonoBehaviour
             else
             {
                 ResetFocus();
-                m_agent.SetDestination(hit.point);
+                if(!m_movementStopped)
+                {
+                    m_agent.SetDestination(hit.point);
+                }
             }
         }
 
@@ -133,6 +141,18 @@ public class PlayerMovement : MonoBehaviour
 
     }
 
+    public void StopAllMovement()
+    {
+        m_movementStopped = true;
+        m_agent.updatePosition = false;
+    }
+
+    public void AllowMovement()
+    {
+        m_movementStopped = false;
+        m_agent.updatePosition = true;
+    }
+
     private void LookAtTarget()
     {
         Vector3 dir = (m_focus.transform.position - m_agent.transform.position).normalized;
@@ -142,7 +162,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void Dash()
     {
-        if(m_timeSinceLastDash >= m_dashCooldown)
+        if(m_timeSinceLastDash >= m_dashCooldown && !m_movementStopped)
         {
             m_agent.isStopped = true;
             m_timeSinceLastDash = 0;
