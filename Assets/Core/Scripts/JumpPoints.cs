@@ -10,14 +10,19 @@ public class JumpPoints : Interactable
     public override void Interact()
     {
         base.Interact();
-        StartCoroutine(Jump());
+        PlayerMovement playerMovement = FindObjectOfType<PlayerMovement>();
+        if(!playerMovement.MovementStopped())
+        {
+            StartCoroutine(Jump(playerMovement));
+        }
     }
 
-    private IEnumerator Jump()
+    private IEnumerator Jump(PlayerMovement playerMovement)
     {
         float jumpTime = 0;
-        PlayerMovement playerMovement = FindObjectOfType<PlayerMovement>();
+        playerMovement.ResetDestination();
         playerMovement.gameObject.GetComponent<Animator>().SetBool(m_bool_animationName, true);
+        playerMovement.ResetFocus();
         playerMovement.StopAllMovement();
         while(jumpTime < m_timeToJump)
         {
@@ -27,6 +32,7 @@ public class JumpPoints : Interactable
         }
         playerMovement.gameObject.GetComponent<Animator>().SetBool(m_bool_animationName, false);
         playerMovement.gameObject.transform.position = m_target.position;
+        playerMovement.ResetFocus();
         playerMovement.AllowMovement();
         playerMovement.ResetDestination();
     }

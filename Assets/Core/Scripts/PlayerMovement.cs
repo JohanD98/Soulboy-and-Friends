@@ -128,7 +128,7 @@ public class PlayerMovement : MonoBehaviour
         interactable.OnFocused(this.transform);
     }
 
-    private void ResetFocus()
+    public void ResetFocus()
     {
         if(m_focus != null)
         {
@@ -143,6 +143,11 @@ public class PlayerMovement : MonoBehaviour
     private void InteractWithInteractable()
     {
 
+    }
+
+    public bool MovementStopped()
+    {
+        return m_movementStopped;
     }
 
     public void ResetDestination()
