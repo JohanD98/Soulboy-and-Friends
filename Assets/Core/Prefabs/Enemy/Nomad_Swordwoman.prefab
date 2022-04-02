@@ -408,7 +408,9 @@ GameObject:
   m_Component:
   - component: {fileID: 3624070118621778482}
   - component: {fileID: 3677385311303031074}
-  m_Layer: 0
+  - component: {fileID: 910097867161464934}
+  - component: {fileID: 8569152414328308262}
+  m_Layer: 7
   m_Name: Nomad_Swordwoman
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -462,6 +464,33 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!136 &910097867161464934
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3628821292822083506}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.5
+  m_Height: 1.75
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.9, z: 0}
+--- !u!114 &8569152414328308262
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3628821292822083506}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c013f017a92f3f48a94e208b3c67cdf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_scriptableStats: {fileID: 11400000, guid: 1d352dc2ab9f9a544a1a14a546775569, type: 2}
 --- !u!1 &3628821384019114080
 GameObject:
   m_ObjectHideFlags: 0

@@ -8,6 +8,7 @@ public class Attack : MonoBehaviour
     public Transform BasicAttackPoint;
     public float BasicAttackRange = 0.5f;
     public LayerMask enemyLayers;
+    public float damage;
     [SerializeField] float attackTime;
 
     // Update is called once per frame
@@ -29,6 +30,8 @@ public class Attack : MonoBehaviour
         foreach(Collider enemy in hitEnemies)
         {
             Debug.Log("We hit");
+
+            Onhit(enemy.GetComponent<Entity>());
         }
 
         StartCoroutine(MoveStop());
@@ -51,5 +54,12 @@ public class Attack : MonoBehaviour
 
         this.gameObject.GetComponent<PlayerMovement>().AllowMovement();
 
+    }
+
+    void Onhit(Entity enemy)
+    {
+        enemy.TakeDamage(new Damage(damage, this.gameObject.GetComponent<Entity>(), enemy));
+        Debug.Log(enemy.GetHealth());
+     
     }
 }

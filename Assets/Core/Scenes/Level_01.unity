@@ -514,6 +514,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Chr_Nomad_Male_02
       objectReference: {fileID: 0}
+    - target: {fileID: 1829374085354194, guid: 30f2ee1f6338c464bbbd30981b3da3f4, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 4672501942270680, guid: 30f2ee1f6338c464bbbd30981b3da3f4, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -949,6 +953,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Chr_Nomad_Male_01
       objectReference: {fileID: 0}
+    - target: {fileID: 1069347578494328, guid: 5cc8937f65137dc49bb957920049ad14, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 4230118703915622, guid: 5cc8937f65137dc49bb957920049ad14, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -1088,6 +1096,10 @@ PrefabInstance:
     - target: {fileID: 1773664768928810, guid: 10202ef1ef7802a4a8bafb709626e655, type: 3}
       propertyPath: m_Name
       value: Chr_Nomad_Female_01
+      objectReference: {fileID: 0}
+    - target: {fileID: 1773664768928810, guid: 10202ef1ef7802a4a8bafb709626e655, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 4159381946450192, guid: 10202ef1ef7802a4a8bafb709626e655, type: 3}
       propertyPath: m_RootOrder
@@ -1443,7 +1455,8 @@ MonoBehaviour:
   BasicAttackRange: 0.5
   enemyLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 128
+  damage: 5
   attackTime: 1
 --- !u!95 &701064347 stripped
 Animator:
@@ -1455,6 +1468,19 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1154323744465846012, guid: 178996305589ec548a8e00f7dd1c63ab, type: 3}
   m_PrefabInstance: {fileID: 1450657530}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &701064352
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 701064342}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e8afa90e2bf8f54f83207ee56e8a651, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_scriptableStats: {fileID: 0}
 --- !u!1001 &747943861
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3544,6 +3570,10 @@ PrefabInstance:
     - target: {fileID: 3628821292822083506, guid: f418d2058c00c1e41aa8ee06cb83cece, type: 3}
       propertyPath: m_Name
       value: Nomad_Swordwoman
+      objectReference: {fileID: 0}
+    - target: {fileID: 3628821292822083506, guid: f418d2058c00c1e41aa8ee06cb83cece, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f418d2058c00c1e41aa8ee06cb83cece, type: 3}
