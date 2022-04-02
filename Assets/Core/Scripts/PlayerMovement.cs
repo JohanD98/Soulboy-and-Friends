@@ -69,6 +69,10 @@ public class PlayerMovement : MonoBehaviour
         {
             //Dash animation
         }
+        if(!m_agent.enabled)
+        {
+            return;
+        }
         if (!m_agent.isStopped && m_agent.hasPath)
         {
             m_animator.SetFloat("moveSpeed", m_agent.speed);
@@ -141,16 +145,26 @@ public class PlayerMovement : MonoBehaviour
 
     }
 
+    public void ResetDestination()
+    {
+        if(m_agent.enabled)
+        {
+            m_agent.ResetPath();
+        }
+    }
+
     public void StopAllMovement()
     {
         m_movementStopped = true;
         m_agent.updatePosition = false;
+        m_agent.enabled = false;
     }
 
     public void AllowMovement()
     {
         m_movementStopped = false;
         m_agent.updatePosition = true;
+        m_agent.enabled = true;
     }
 
     private void LookAtTarget()

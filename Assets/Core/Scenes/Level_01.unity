@@ -802,6 +802,7 @@ MonoBehaviour:
   radius: 1.25
   m_target: {fileID: 933884572}
   m_timeToJump: 15
+  m_bool_animationName: 
 --- !u!135 &411500452
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -1639,6 +1640,7 @@ MonoBehaviour:
   radius: 1.25
   m_target: {fileID: 411500455}
   m_timeToJump: 15
+  m_bool_animationName: 
 --- !u!135 &933884574
 SphereCollider:
   m_ObjectHideFlags: 0
