@@ -23,7 +23,7 @@ public class Attack : MonoBehaviour
     void basicAttack()
     {
 
-        animator.SetTrigger("attack");
+        animator.SetTrigger("basicAttack");
 
         Collider[] hitEnemies = Physics.OverlapSphere(BasicAttackPoint.position, BasicAttackRange, enemyLayers);
 
@@ -35,6 +35,7 @@ public class Attack : MonoBehaviour
         }
 
         StartCoroutine(MoveStop());
+
 
 
     }

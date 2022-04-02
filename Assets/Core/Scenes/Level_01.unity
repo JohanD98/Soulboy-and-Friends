@@ -1433,54 +1433,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1857151839454070378, guid: 4cfb0f9f8b69edf4285f7b9e4e652b2b, type: 3}
   m_PrefabInstance: {fileID: 1861201837884994002}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &701064342 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1157539158190085390, guid: 178996305589ec548a8e00f7dd1c63ab, type: 3}
-  m_PrefabInstance: {fileID: 1450657530}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &701064343
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 701064342}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3b1fbe5fffba52a4493208bf28441426, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  animator: {fileID: 701064347}
-  BasicAttackPoint: {fileID: 2112503708}
-  BasicAttackRange: 0.5
-  enemyLayers:
-    serializedVersion: 2
-    m_Bits: 128
-  damage: 5
-  attackTime: 1
---- !u!95 &701064347 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 1244976196581731316, guid: 178996305589ec548a8e00f7dd1c63ab, type: 3}
-  m_PrefabInstance: {fileID: 1450657530}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &701064348 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 1154323744465846012, guid: 178996305589ec548a8e00f7dd1c63ab, type: 3}
-  m_PrefabInstance: {fileID: 1450657530}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &701064352
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 701064342}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2e8afa90e2bf8f54f83207ee56e8a651, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_scriptableStats: {fileID: 0}
 --- !u!1001 &747943861
 PrefabInstance:
   m_ObjectHideFlags: 0
