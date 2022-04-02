@@ -8,6 +8,7 @@ public class Attack : MonoBehaviour
     public Transform BasicAttackPoint;
     public float BasicAttackRange = 0.5f;
     public LayerMask enemyLayers;
+    [SerializeField] float attackTime;
 
     // Update is called once per frame
     void Update()
@@ -20,6 +21,7 @@ public class Attack : MonoBehaviour
 
     void basicAttack()
     {
+
         animator.SetTrigger("attack");
 
         Collider[] hitEnemies = Physics.OverlapSphere(BasicAttackPoint.position, BasicAttackRange, enemyLayers);
@@ -28,5 +30,26 @@ public class Attack : MonoBehaviour
         {
             Debug.Log("We hit");
         }
+
+        StartCoroutine(MoveStop());
+
+
+    }
+
+    IEnumerator MoveStop()
+    {
+        float attackTimeRemaining = attackTime;
+
+        this.gameObject.GetComponent<PlayerMovement>().StopAllMovement();
+
+        while (attackTimeRemaining > 0)
+        {
+            attackTimeRemaining -= Time.deltaTime;
+            yield return null;
+
+        }
+
+        this.gameObject.GetComponent<PlayerMovement>().AllowMovement();
+
     }
 }
