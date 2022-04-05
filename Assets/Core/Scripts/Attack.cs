@@ -11,7 +11,8 @@ public class Attack : MonoBehaviour
     public float damage;
     [SerializeField] float coolDownTimeBA;
     private float coolUpTimeBA;
-    [SerializeField] float attackTime;
+    [SerializeField] float moveStopTime;
+    [SerializeField] float bAttackHitDelay;
 
     // Update is called once per frame
     void Update()
@@ -34,40 +35,68 @@ public class Attack : MonoBehaviour
             this.gameObject.transform.LookAt(new Vector3(hit.point.x, this.transform.position.y, hit.point.z));
         }
 
-        
-
         animator.SetTrigger("basicAttack");
+
+        StopAllCoroutines();
+        //StopCoroutine(PerformBasicAttack());
+        StartCoroutine(PerformBasicAttack());
+
 
         Collider[] hitEnemies = Physics.OverlapSphere(BasicAttackPoint.position, BasicAttackRange, enemyLayers);
 
-        foreach(Collider enemy in hitEnemies)
-        {
-            Debug.Log("We hit");
 
-            Onhit(enemy.GetComponent<Entity>());
-        }
 
-        StartCoroutine(MoveStop());
+        
 
 
 
     }
 
-    IEnumerator MoveStop()
+    IEnumerator PerformBasicAttack()
     {
-        float attackTimeRemaining = attackTime;
 
+        float moveStopTimeRemaining = moveStopTime;
+        float bAttackHitDelayRemaining = bAttackHitDelay;
+        bool hasAppliedDmg = false;
+        bool hasStartedMovement = false;
         this.gameObject.GetComponent<PlayerMovement>().StopAllMovement();
 
-        while (attackTimeRemaining > 0)
+        while (moveStopTimeRemaining > 0 || bAttackHitDelayRemaining > 0)
         {
-            attackTimeRemaining -= Time.deltaTime;
+            moveStopTimeRemaining -= Time.deltaTime;
+            bAttackHitDelayRemaining -= Time.deltaTime;
+
+            if (moveStopTimeRemaining <= 0 && !hasStartedMovement)
+            {
+                this.gameObject.GetComponent<PlayerMovement>().AllowMovement();
+
+                hasStartedMovement = true;
+            }
+
+            if (bAttackHitDelayRemaining <= 0 && !hasAppliedDmg)
+            {
+                ApplyAttack(Physics.OverlapSphere(BasicAttackPoint.position, BasicAttackRange, enemyLayers));
+
+                hasAppliedDmg = true;
+            }
+
+
             yield return null;
 
         }
 
-        this.gameObject.GetComponent<PlayerMovement>().AllowMovement();
+        
 
+    }
+
+    private void ApplyAttack(Collider[] enemiesHit)
+    {
+        foreach (Collider enemy in enemiesHit)
+        {
+            Debug.Log("We hit");
+
+            Onhit(enemy.GetComponent<Entity>());
+        }
     }
 
     void Onhit(Entity enemy)

@@ -5311,8 +5311,16 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 701064343, guid: 178996305589ec548a8e00f7dd1c63ab, type: 3}
+      propertyPath: moveStopTime
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 701064343, guid: 178996305589ec548a8e00f7dd1c63ab, type: 3}
       propertyPath: coolDownTimeBA
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 701064343, guid: 178996305589ec548a8e00f7dd1c63ab, type: 3}
+      propertyPath: bAttackHitDelay
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 1615371159, guid: 178996305589ec548a8e00f7dd1c63ab, type: 3}
       propertyPath: m_cam
