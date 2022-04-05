@@ -24,6 +24,7 @@ public class JumpPoints : Interactable
         playerMovement.gameObject.GetComponent<Animator>().SetBool(m_bool_animationName, true);
         playerMovement.ResetFocus();
         playerMovement.StopAllMovement();
+        playerMovement.transform.LookAt(new Vector3(m_target.position.x, this.transform.position.y ,m_target.position.z));
         while(jumpTime < m_timeToJump)
         {
             jumpTime += Time.deltaTime;

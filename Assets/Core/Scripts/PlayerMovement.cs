@@ -104,7 +104,7 @@ public class PlayerMovement : MonoBehaviour
                 ResetFocus();
                 if(!m_movementStopped)
                 {
-                    m_agent.SetDestination(hit.point);
+                    m_agent.SetDestination(hit.point); 
                 }
             }
         }
