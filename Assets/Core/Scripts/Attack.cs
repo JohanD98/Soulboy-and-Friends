@@ -9,19 +9,32 @@ public class Attack : MonoBehaviour
     public float BasicAttackRange = 0.5f;
     public LayerMask enemyLayers;
     public float damage;
+    [SerializeField] float coolDownTimeBA;
+    private float coolUpTimeBA;
     [SerializeField] float attackTime;
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Mouse0))
+        if (Input.GetKeyDown(KeyCode.Mouse0) && Time.time > coolUpTimeBA)
         {
             basicAttack();
+            coolUpTimeBA = Time.time + coolDownTimeBA;
         }   
     }
 
     void basicAttack()
     {
+
+
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        RaycastHit hit;
+        if (Physics.Raycast(ray, out hit))
+        {
+            this.gameObject.transform.LookAt(new Vector3(hit.point.x, this.transform.position.y, hit.point.z));
+        }
+
+        
 
         animator.SetTrigger("basicAttack");
 
