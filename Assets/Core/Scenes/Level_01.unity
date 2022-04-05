@@ -5366,8 +5366,23 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 1157539158190085390, guid: 178996305589ec548a8e00f7dd1c63ab, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 178996305589ec548a8e00f7dd1c63ab, type: 3}
+--- !u!114 &1450657531 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 701064352, guid: 178996305589ec548a8e00f7dd1c63ab, type: 3}
+  m_PrefabInstance: {fileID: 1450657530}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e8afa90e2bf8f54f83207ee56e8a651, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1459823264
 GameObject:
   m_ObjectHideFlags: 0
@@ -7545,6 +7560,18 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1814399945}
     - target: {fileID: 8569152414328308262, guid: f418d2058c00c1e41aa8ee06cb83cece, type: 3}
+      propertyPath: m_target
+      value: 
+      objectReference: {fileID: 1450657531}
+    - target: {fileID: 8569152414328308262, guid: f418d2058c00c1e41aa8ee06cb83cece, type: 3}
+      propertyPath: m_alertRadius
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8569152414328308262, guid: f418d2058c00c1e41aa8ee06cb83cece, type: 3}
+      propertyPath: m_attackRange
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8569152414328308262, guid: f418d2058c00c1e41aa8ee06cb83cece, type: 3}
       propertyPath: m_wanderPos.x
       value: -1.05
       objectReference: {fileID: 0}
@@ -7561,12 +7588,32 @@ PrefabInstance:
       value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 8569152414328308262, guid: f418d2058c00c1e41aa8ee06cb83cece, type: 3}
+      propertyPath: m_detectionRadius
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8569152414328308262, guid: f418d2058c00c1e41aa8ee06cb83cece, type: 3}
+      propertyPath: m_enemyMask.m_Bits
+      value: 128
+      objectReference: {fileID: 0}
+    - target: {fileID: 8569152414328308262, guid: f418d2058c00c1e41aa8ee06cb83cece, type: 3}
       propertyPath: m_maxWanderCooldown
       value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 8569152414328308262, guid: f418d2058c00c1e41aa8ee06cb83cece, type: 3}
       propertyPath: m_minWanderCooldown
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8569152414328308262, guid: f418d2058c00c1e41aa8ee06cb83cece, type: 3}
+      propertyPath: m_playerMask.m_Bits
+      value: 256
+      objectReference: {fileID: 0}
+    - target: {fileID: 8569152414328308262, guid: f418d2058c00c1e41aa8ee06cb83cece, type: 3}
+      propertyPath: m_timeUntilLostIntrest
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8569152414328308262, guid: f418d2058c00c1e41aa8ee06cb83cece, type: 3}
+      propertyPath: m_checkForPlayerCooldown
+      value: 0.2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f418d2058c00c1e41aa8ee06cb83cece, type: 3}

@@ -12,7 +12,6 @@ public class Entity : MonoBehaviour
     protected void EntityStart()
     {
         SetStatsToScriptableStats(m_scriptableStats);
-        Debug.Log("start");
     }
 
     // Update is called once per frame
