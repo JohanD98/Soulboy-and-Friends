@@ -4,59 +4,51 @@ using UnityEngine;
 
 public class Attack : MonoBehaviour
 {
-    public Animator animator;
-    public Transform BasicAttackPoint;
-    public float BasicAttackRange = 0.5f;
-    public LayerMask enemyLayers;
-    public float damage;
-    [SerializeField] float coolDownTimeBA;
-    private float coolUpTimeBA;
-    [SerializeField] float moveStopTime;
-    [SerializeField] float bAttackHitDelay;
+    [SerializeField] Animator m_animator;
+    [SerializeField] LayerMask m_enemyLayers;
+    [SerializeField] Transform m_basicAttackPoint;
+    [SerializeField] float m_moveStopTime;
+    [SerializeField] float m_bAttackHitDelay;
+    [SerializeField] float m_coolDownTimeBA;
+    [SerializeField] float m_basicAttackRange;
+    [SerializeField] float m_damage;
+    private float m_coolUpTimeBA;
+    private Coroutine m_lastCoroutine;
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Mouse0) && Time.time > coolUpTimeBA)
+        if (Input.GetKeyDown(KeyCode.Mouse0) && Time.time > m_coolUpTimeBA)
         {
-            basicAttack();
-            coolUpTimeBA = Time.time + coolDownTimeBA;
+            BasicAttack();
+            m_coolUpTimeBA = Time.time + m_coolDownTimeBA;
         }   
     }
 
-    void basicAttack()
+    void BasicAttack()
     {
-
-
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
+
         if (Physics.Raycast(ray, out hit))
         {
             this.gameObject.transform.LookAt(new Vector3(hit.point.x, this.transform.position.y, hit.point.z));
         }
 
-        animator.SetTrigger("basicAttack");
+        m_animator.SetTrigger("basicAttack");
 
-        StopAllCoroutines();
-        //StopCoroutine(PerformBasicAttack());
-        StartCoroutine(PerformBasicAttack());
-
-
-        Collider[] hitEnemies = Physics.OverlapSphere(BasicAttackPoint.position, BasicAttackRange, enemyLayers);
-
-
-
-        
-
-
-
+        if(m_lastCoroutine != null)
+        {
+            StopCoroutine(m_lastCoroutine);
+        }
+        m_lastCoroutine = StartCoroutine(PerformBasicAttack());
     }
 
     IEnumerator PerformBasicAttack()
     {
 
-        float moveStopTimeRemaining = moveStopTime;
-        float bAttackHitDelayRemaining = bAttackHitDelay;
+        float moveStopTimeRemaining = m_moveStopTime;
+        float bAttackHitDelayRemaining = m_bAttackHitDelay;
         bool hasAppliedDmg = false;
         bool hasStartedMovement = false;
         this.gameObject.GetComponent<PlayerMovement>().StopAllMovement();
@@ -75,18 +67,13 @@ public class Attack : MonoBehaviour
 
             if (bAttackHitDelayRemaining <= 0 && !hasAppliedDmg)
             {
-                ApplyAttack(Physics.OverlapSphere(BasicAttackPoint.position, BasicAttackRange, enemyLayers));
+                ApplyAttack(Physics.OverlapSphere(m_basicAttackPoint.position, m_basicAttackRange, m_enemyLayers));
 
                 hasAppliedDmg = true;
             }
 
-
             yield return null;
-
         }
-
-        
-
     }
 
     private void ApplyAttack(Collider[] enemiesHit)
@@ -101,8 +88,7 @@ public class Attack : MonoBehaviour
 
     void Onhit(Entity enemy)
     {
-        enemy.TakeDamage(new Damage(damage, this.gameObject.GetComponent<Entity>(), enemy));
+        enemy.TakeDamage(new Damage(m_damage, this.gameObject.GetComponent<Entity>(), enemy));
         Debug.Log(enemy.GetHealth());
-     
     }
 }

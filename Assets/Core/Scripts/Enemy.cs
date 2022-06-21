@@ -5,7 +5,7 @@ using UnityEngine.AI;
 
 public class Enemy : Entity
 {
-    [SerializeField] NavMeshAgent m_agent;
+    [SerializeField] protected NavMeshAgent m_agent;
     [SerializeField] Vector3 m_wanderPos;
     [SerializeField] float m_wanderRadius;
     [SerializeField] float m_minWanderCooldown;
@@ -17,15 +17,17 @@ public class Enemy : Entity
     private float m_lastWanderTime;
     private bool m_isStanding;
     private float m_nextWanderTime;
-    [SerializeField] Player m_target;
-    private bool m_isFollowingPlayer;
-    private float m_timeSincePlayerLastFound;
+    [SerializeField] protected Player m_target;
+    protected bool m_isFollowingPlayer;
     [SerializeField] float m_timeUntilLostIntrest;
+    private float m_timeSincePlayerLastFound;
     [SerializeField] float m_checkForPlayerCooldown;
     [SerializeField] float m_attackRange;
 
+    protected bool m_movementAllowed;
+
     // Start is called before the first frame update
-    void Start()
+    protected void EnemyStart()
     {
         EntityStart();
         m_nextWanderTime = Random.Range(m_minWanderCooldown, m_maxWanderCooldown);
@@ -33,7 +35,7 @@ public class Enemy : Entity
     }
 
     // Update is called once per frame
-    void Update()
+    protected void EnemyUpdate()
     {
         if (m_isFollowingPlayer)
         {
@@ -59,12 +61,12 @@ public class Enemy : Entity
         if (Vector3.Distance(m_target.transform.position, m_agent.transform.position) < m_detectionRadius)
         {
             FoundPlayer();
-            m_timeUntilLostIntrest = 0;
+            m_timeSincePlayerLastFound = 0;
         }
         else
         {
             m_timeSincePlayerLastFound += m_checkForPlayerCooldown;
-            if(m_timeSincePlayerLastFound >= m_timeUntilLostIntrest)
+            if(m_timeSincePlayerLastFound >= m_timeUntilLostIntrest && m_isFollowingPlayer)
             {
                 LostPlayer();
             }
@@ -108,9 +110,12 @@ public class Enemy : Entity
     {
         if(Vector3.Distance(m_target.transform.position, m_agent.transform.position) < m_attackRange)
         {
-            //Attack
+            //Maybe attack, might be handled in child scripts
         }
-        m_agent.SetDestination(m_target.transform.position);
+        if(m_movementAllowed)
+        {
+            m_agent.SetDestination(m_target.transform.position);
+        }
     }
 
     private void CheckWander()
@@ -134,7 +139,10 @@ public class Enemy : Entity
     {
         m_lastWanderTime = 0;
         m_nextWanderTime = Random.Range(m_minWanderCooldown, m_maxWanderCooldown);
-        m_agent.SetDestination(Random.insideUnitSphere*m_wanderRadius + m_wanderPos);
+        if(m_movementAllowed)
+        {
+            m_agent.SetDestination(Random.insideUnitSphere*m_wanderRadius + m_wanderPos);
+        }
     }
 
     private void OnDrawGizmosSelected()

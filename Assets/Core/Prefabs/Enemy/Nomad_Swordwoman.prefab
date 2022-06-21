@@ -409,7 +409,7 @@ GameObject:
   - component: {fileID: 3624070118621778482}
   - component: {fileID: 3677385311303031074}
   - component: {fileID: 910097867161464934}
-  - component: {fileID: 8569152414328308262}
+  - component: {fileID: 28223933760071682}
   m_Layer: 7
   m_Name: Nomad_Swordwoman
   m_TagString: Untagged
@@ -478,7 +478,7 @@ CapsuleCollider:
   m_Height: 1.75
   m_Direction: 1
   m_Center: {x: 0, y: 0.9, z: 0}
---- !u!114 &8569152414328308262
+--- !u!114 &28223933760071682
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -487,10 +487,33 @@ MonoBehaviour:
   m_GameObject: {fileID: 3628821292822083506}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1c013f017a92f3f48a94e208b3c67cdf, type: 3}
+  m_Script: {fileID: 11500000, guid: 55b622d0d9eb9d74fa331fe16ccddb17, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_scriptableStats: {fileID: 11400000, guid: 1d352dc2ab9f9a544a1a14a546775569, type: 2}
+  m_scriptableStats: {fileID: 0}
+  m_agent: {fileID: 0}
+  m_wanderPos: {x: 0, y: 0, z: 0}
+  m_wanderRadius: 0
+  m_minWanderCooldown: 0
+  m_maxWanderCooldown: 0
+  m_detectionRadius: 0
+  m_alertRadius: 0
+  m_playerMask:
+    serializedVersion: 2
+    m_Bits: 0
+  m_enemyMask:
+    serializedVersion: 2
+    m_Bits: 0
+  m_target: {fileID: 0}
+  m_timeUntilLostIntrest: 0
+  m_checkForPlayerCooldown: 0
+  m_attackRange: 0
+  m_stafeDistance: 0
+  m_strafeChance: 0
+  m_minStrafeTime: 0
+  m_maxStrafeTime: 0
+  m_doubleStrafeChance: 0
+  m_doubleStrafeTime: 0
 --- !u!1 &3628821384019114080
 GameObject:
   m_ObjectHideFlags: 0
