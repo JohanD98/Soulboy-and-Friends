@@ -1015,6 +1015,7 @@ GameObject:
   - component: {fileID: 7678996712000956702}
   - component: {fileID: 7678996712000956713}
   - component: {fileID: 2636987318071536479}
+  - component: {fileID: -5297555019632425304}
   m_Layer: 0
   m_Name: Player_thirdperson
   m_TagString: Untagged
@@ -1082,16 +1083,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b1fbe5fffba52a4493208bf28441426, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animator: {fileID: 8923405001492981373}
-  BasicAttackPoint: {fileID: 7678996712871358997}
-  BasicAttackRange: 0.5
-  enemyLayers:
+  m_animator: {fileID: 0}
+  m_enemyLayers:
     serializedVersion: 2
-    m_Bits: 128
-  damage: 5
-  coolDownTimeBA: 0
-  moveStopTime: 0
-  bAttackHitDelay: 0
+    m_Bits: 0
+  m_basicAttackPoint: {fileID: 0}
+  m_moveStopTime: 0
+  m_bAttackHitDelay: 0
+  m_coolDownTimeBA: 0
+  m_basicAttackRange: 0
+  m_damage: 0
 --- !u!114 &7678996712000956713
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1123,6 +1124,36 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0.8, z: 0.06}
+--- !u!114 &-5297555019632425304
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8827373477238052999}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5695020bb2e696488b83a052bb6c86a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  controller: {fileID: 2636987318071536479}
+  playerGO: {fileID: 0}
+  playerCam: {fileID: 0}
+  groundCollision: {fileID: 0}
+  groundDistance: 0
+  groundMask:
+    serializedVersion: 2
+    m_Bits: 0
+  bufferedJumpDuration: 0
+  cameraNormalFOV: 0
+  cameraSprintingFOV: 0
+  normalMoveSpeed: 0
+  sprintingMoveSpeed: 0
+  timeToFullSpeed: 0
+  playerMouseSensitivity: 0
+  momentumLossSpeed: 0
+  gravity: -9.81
+  jumpStrnength: 10
 --- !u!1 &8827378108178768871
 GameObject:
   m_ObjectHideFlags: 0
